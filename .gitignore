@@ -23,6 +23,14 @@ _backup_before_image_replace/
 
 playwright-report/
 test-results/
+screenshots/
+_screenshots/
+qa-*.png
+qa-*.jpg
+qa-*.jpeg
+screenshot*.png
+screenshot*.jpg
+*.tmp
 rendered_resume_natural/
 scripts/
 

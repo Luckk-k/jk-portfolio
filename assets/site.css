@@ -238,7 +238,7 @@ main {
 
 .home-banner {
   width: 100%;
-  height: 140px;
+  height: 104px;
   margin: 0;
   overflow: hidden;
 }
@@ -408,6 +408,7 @@ main {
 }
 
 .method-strip article {
+  position: relative;
   display: grid;
   grid-template-columns: 24px minmax(0, 1fr);
   gap: 9px;
@@ -416,6 +417,29 @@ main {
   border-radius: var(--radius);
   background: rgba(248, 247, 244, 0.42);
   padding: 16px 18px;
+}
+
+.method-strip article::after {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  color: var(--faint);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  opacity: 0.52;
+}
+
+.method-strip article:nth-child(1)::after {
+  content: "01";
+}
+
+.method-strip article:nth-child(2)::after {
+  content: "02";
+}
+
+.method-strip article:nth-child(3)::after {
+  content: "03";
 }
 
 .method-strip svg {
@@ -442,15 +466,23 @@ main {
 }
 
 .section {
-  padding: 72px 0;
+  padding: 70px 0;
 }
 
 .section.has-large-visual {
-  padding: 72px 0;
+  padding: 70px 0;
 }
 
 .section + .section {
   border-top: 1px solid rgba(232, 230, 225, 0.88);
+}
+
+.section.map-section {
+  padding: 66px 0 64px;
+}
+
+.section.early-section {
+  padding: 64px 0 62px;
 }
 
 .section-heading {
@@ -479,7 +511,7 @@ main {
   max-width: var(--illustration-max, 600px);
   height: auto;
   min-height: 0;
-  margin: 30px auto 34px;
+  margin: 26px auto 30px;
   overflow: visible;
   border: 0;
   border-radius: 0;
@@ -514,43 +546,43 @@ main {
 .cases-visual {
   --illustration-max: 573px;
   width: min(66.666%, var(--illustration-max));
-  margin-top: 30px;
-  margin-bottom: 34px;
+  margin-top: 26px;
+  margin-bottom: 30px;
 }
 
 .project-map-visual {
   --illustration-max: 547px;
   width: min(66.666%, var(--illustration-max));
-  margin-top: 30px;
-  margin-bottom: 34px;
+  margin-top: 24px;
+  margin-bottom: 26px;
 }
 
 .capability-visual {
   --illustration-max: 507px;
   width: min(66.666%, var(--illustration-max));
-  margin-top: 30px;
-  margin-bottom: 34px;
+  margin-top: 26px;
+  margin-bottom: 30px;
 }
 
 .archive-visual {
   --illustration-max: 507px;
   width: min(66.666%, var(--illustration-max));
-  margin-top: 30px;
-  margin-bottom: 34px;
+  margin-top: 26px;
+  margin-bottom: 30px;
 }
 
 .career-visual {
   --illustration-max: 573px;
   width: min(66.666%, var(--illustration-max));
-  margin-top: 30px;
-  margin-bottom: 34px;
+  margin-top: 26px;
+  margin-bottom: 30px;
 }
 
 .early-practice-visual {
   --illustration-max: 507px;
   width: min(66.666%, var(--illustration-max));
-  margin-top: 30px;
-  margin-bottom: 34px;
+  margin-top: 22px;
+  margin-bottom: 24px;
 }
 
 .case-grid {
@@ -698,6 +730,7 @@ main {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
+  overflow-anchor: none;
 }
 
 .project-card {
@@ -774,31 +807,47 @@ main {
 
 .map-actions {
   display: flex;
-  justify-content: flex-start;
-  margin-top: 16px;
+  justify-content: center;
+  margin-top: 28px;
+  overflow-anchor: none;
 }
 
 .text-button {
-  border: 1px solid rgba(42, 42, 42, 0.28);
+  min-height: 39px;
+  border: 1px solid rgba(42, 42, 42, 0.14);
   border-radius: 999px;
-  background: var(--surface);
-  color: var(--heading);
+  background: rgba(255, 255, 255, 0.28);
+  color: var(--muted);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
-  padding: 10px 16px;
-  box-shadow: 0 8px 18px rgba(20, 20, 20, 0.05);
-  transition: background var(--ease), border-color var(--ease), color var(--ease), transform var(--ease), box-shadow var(--ease);
+  padding: 0 16px;
+  box-shadow: none;
+  transition: background var(--ease), border-color var(--ease), color var(--ease);
 }
 
 .text-button:hover,
 .text-button:focus-visible {
-  border-color: var(--heading);
-  background: var(--heading);
-  color: var(--surface);
-  box-shadow: var(--shadow);
-  transform: translateY(-1px);
+  border-color: rgba(42, 42, 42, 0.28);
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--heading);
   outline: none;
+}
+
+.project-card-enter {
+  animation: projectCardEnter 320ms var(--motion-ease) both;
+}
+
+@keyframes projectCardEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .capability-matrix {
@@ -1016,7 +1065,7 @@ main {
 }
 
 .contact-section {
-  padding: 58px 0 44px;
+  padding: 62px 0 48px;
 }
 
 .site-container.contact-layout {
@@ -1069,7 +1118,7 @@ main {
 .contact-panel {
   display: flex;
   justify-content: center;
-  margin-top: 42px;
+  margin-top: 32px;
 }
 
 .contact-visual {
@@ -1463,7 +1512,12 @@ body.drawer-open {
 
   .section,
   .section.has-large-visual {
-    padding: 52px 0;
+    padding: 50px 0;
+  }
+
+  .section.map-section,
+  .section.early-section {
+    padding: 46px 0;
   }
 }
 
@@ -1491,15 +1545,15 @@ body.drawer-open {
   }
 
   .hero {
-    padding: 0 0 24px;
+    padding: 0 0 22px;
   }
 
   .home-banner {
-    height: 140px;
+    height: 88px;
   }
 
   .section-visual {
-    margin: 26px auto 30px;
+    margin: 22px auto 26px;
   }
 
   .capability-visual {
@@ -1524,7 +1578,12 @@ body.drawer-open {
 
   .section,
   .section.has-large-visual {
-    padding: 44px 0;
+    padding: 42px 0;
+  }
+
+  .section.map-section,
+  .section.early-section {
+    padding: 40px 0;
   }
 
   .section-heading h2 {
@@ -1570,11 +1629,11 @@ body.drawer-open {
   }
 
   .contact-section {
-    padding: 44px 0 32px;
+    padding: 40px 0 30px;
   }
 
   .contact-panel {
-    margin: 32px -36px 0;
+    margin: 26px -36px 0;
   }
 
   .contact-body {
