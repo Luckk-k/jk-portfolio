@@ -453,20 +453,60 @@ function renderFeaturedWork() {
   const container = document.getElementById("featuredWork");
   if (!container) return;
 
-  container.innerHTML = featuredWork.map((item) => `
-    <article class="case-card">
+  container.innerHTML = featuredWork.map((item, index) => {
+    const project = projectLibrary.find((projectItem) => projectItem.title === item.title);
+    const details = project?.details || {};
+    const projectIndex = project ? projectLibrary.indexOf(project) : -1;
+    const caseClass = index === 0 ? "case-card case-card--primary" : "case-card case-card--secondary";
+
+    return `
+    <article class="${caseClass}">
+      <div class="case-card-surface" aria-hidden="true"></div>
       <div class="case-card-head">
         <span class="case-visual case-icon meta-icon">${getCaseIcon(item.icon)}</span>
         <span class="case-category">${escapeHtml(item.category)}</span>
+        <span class="case-card-index">${String(index + 1).padStart(2, "0")}</span>
       </div>
       <div class="case-body">
         <h3 class="case-title card-title">${escapeHtml(item.title)}</h3>
         <p class="case-line">${escapeHtml(item.line)}</p>
-        <p class="card-body">${escapeHtml(item.body)}</p>
         <div class="tag-row">${renderTags(item.tags)}</div>
+        <div class="case-proof-list">
+          <div class="case-proof">
+            <span>背景问题</span>
+            <p>${escapeHtml(details.background || item.line)}</p>
+          </div>
+          <div class="case-proof">
+            <span>我的角色 / 工作方式</span>
+            <p>${escapeHtml(details.responsibility || item.body)}</p>
+          </div>
+          <div class="case-proof">
+            <span>关键产出</span>
+            <p>${escapeHtml(details.outputs || item.body)}</p>
+          </div>
+        </div>
+        ${projectIndex >= 0 ? `
+          <button class="case-card-action" type="button" data-featured-project-index="${projectIndex}">
+            查看项目
+            <span aria-hidden="true">→</span>
+          </button>
+        ` : ""}
       </div>
     </article>
-  `).join("");
+    `;
+  }).join("");
+}
+
+function initFeaturedCaseActions() {
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest?.("[data-featured-project-index]");
+    if (!trigger) return;
+
+    const item = projectLibrary[Number(trigger.dataset.featuredProjectIndex)];
+    if (!item) return;
+
+    openProjectDrawer(item, trigger);
+  });
 }
 
 function matchesProjectFilter(item) {
@@ -1099,6 +1139,7 @@ function init() {
   renderEarlyPractice();
   renderContact();
   initProjectDrawer();
+  initFeaturedCaseActions();
   initMotion();
   initAnchorNavigation();
   initScrollState();
