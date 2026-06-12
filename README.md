@@ -49,3 +49,15 @@ git push
 ```
 
 Vercel 连接 GitHub 仓库后，会在每次 push 后自动重新部署。
+
+也可以使用维护脚本自动完成本地检查、提交和推送：
+
+```bash
+./deploy.sh "update portfolio site"
+```
+
+只做本地检查、不提交不推送：
+
+```bash
+./deploy.sh --check-only
+```
