@@ -879,14 +879,19 @@ function initIntroMotion() {
 
   const introItems = [
     document.querySelector(".nav-shell"),
-    document.querySelector(".hero-main"),
-    document.querySelector(".hero-visual-wrap"),
+    document.querySelector(".hero-kicker"),
+    document.querySelector(".hero-name"),
+    document.querySelector(".hero-role"),
+    ...document.querySelectorAll(".hero-copy"),
+    document.querySelector(".hero-tags"),
+    document.querySelector(".hero-actions"),
+    document.querySelector(".hero-stage"),
     ...document.querySelectorAll(".method-strip article")
   ].filter(Boolean);
 
   introItems.forEach((item, index) => {
     item.classList.add("intro-reveal");
-    item.style.setProperty("--intro-delay", `${[0, 60, 120, 180, 230, 280][index] || 280}ms`);
+    item.style.setProperty("--intro-delay", `${Math.min(index * 70, 560)}ms`);
   });
 }
 
@@ -993,7 +998,7 @@ function initAnchorNavigation() {
   }, true);
 
   document.addEventListener("click", (event) => {
-    const link = event.target.closest?.(".brand[href^='#'], .nav-links a[href^='#']");
+    const link = event.target.closest?.(".brand[href^='#'], .nav-links a[href^='#'], .hero-actions a[href^='#']");
     if (!link) return;
 
     event.preventDefault();
@@ -1007,6 +1012,30 @@ function initAnchorNavigation() {
   if (window.location.hash) {
     window.setTimeout(() => scrollToAnchor(window.location.hash), 0);
   }
+}
+
+function initScrollState() {
+  const header = document.querySelector(".site-header");
+
+  const sync = () => {
+    const isScrolled = window.scrollY > 12;
+    document.body.classList.toggle("is-scrolled", isScrolled);
+    header?.classList.toggle("is-scrolled", isScrolled);
+  };
+
+  let ticking = false;
+  const requestSync = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      sync();
+      ticking = false;
+    });
+  };
+
+  sync();
+  window.addEventListener("scroll", requestSync, { passive: true });
+  window.addEventListener("resize", requestSync);
 }
 
 function initNavState() {
@@ -1067,6 +1096,7 @@ function init() {
   initProjectDrawer();
   initMotion();
   initAnchorNavigation();
+  initScrollState();
   initNavState();
 }
 
