@@ -615,7 +615,7 @@ function scrollToProjectMapAnchor() {
 
   const header = document.querySelector(".site-header");
   const headerHeight = header ? header.getBoundingClientRect().height : 0;
-  const top = anchor.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+  const top = anchor.getBoundingClientRect().top + window.scrollY - headerHeight - 56;
 
   window.scrollTo({
     top: Math.max(0, top),
@@ -974,7 +974,8 @@ function scrollToAnchor(hash, updateHistory = false) {
   const anchor = target.querySelector?.(".section-heading") || target;
   const header = document.querySelector(".site-header");
   const headerHeight = header ? header.getBoundingClientRect().height : 0;
-  const top = anchor.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+  const anchorOffset = headerHeight + 56;
+  const top = anchor.getBoundingClientRect().top + window.scrollY - anchorOffset;
 
   window.scrollTo({
     top: Math.max(0, top),
@@ -1062,6 +1063,10 @@ function initNavState() {
         activeHash = hash;
       }
     });
+
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      activeHash = targets[targets.length - 1]?.hash || activeHash;
+    }
 
     navLinks.forEach((link) => {
       link.classList.toggle("is-active", link.getAttribute("href") === activeHash);
