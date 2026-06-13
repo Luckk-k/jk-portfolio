@@ -315,34 +315,46 @@ const capabilities = [
 
 const archiveGroups = [
   {
-    title: "方案材料",
+    title: "PRD / 功能说明",
+    type: "Product Docs",
+    intro: "围绕角色、场景、功能边界、后台规则和验收口径组织产品说明，便于评审和后续协作。",
+    structures: ["角色", "场景", "规则", "验收"],
+    status: "脱敏材料整理中"
+  },
+  {
+    title: "流程规范",
+    type: "Process Rules",
+    intro: "记录评审、发布、资质、伙伴接入和培训节点，明确责任人、输入、输出和检查点。",
+    structures: ["节点", "责任人", "输入", "输出"],
+    status: "脱敏材料整理中"
+  },
+  {
+    title: "发布材料",
+    type: "Release Notes",
+    intro: "梳理版本范围、能力变化、使用说明和对外口径，让销售、服务和交付能同步理解产品变化。",
+    structures: ["版本", "范围", "变化", "口径"],
+    status: "脱敏材料整理中"
+  },
+  {
+    title: "售前方案",
     type: "Solution Notes",
     intro: "围绕客户背景、招标条款、产品能力、交付路径和风险边界组织方案内容，支撑售前沟通与内部评估。",
-    structures: ["背景", "条款", "方案", "边界", "风险", "下一步"]
+    structures: ["背景", "条款", "方案", "边界"],
+    status: "脱敏材料整理中"
   },
   {
     title: "原型与交互",
     type: "Prototype Paths",
-    intro: "在原型阶段说明角色、入口、状态、流程、异常和后台规则，减少后续评审中的理解偏差。",
-    structures: ["角色", "场景", "状态", "路径", "异常", "规则"]
-  },
-  {
-    title: "流程文档",
-    type: "Working Rhythm",
-    intro: "记录评审、发布、资质、伙伴接入和培训节点，明确责任人、输入、输出和检查点。",
-    structures: ["节点", "责任人", "输入", "输出", "检查点"]
-  },
-  {
-    title: "产品说明",
-    type: "Product Language",
-    intro: "统一产品定位、核心能力、适用场景、使用方式和常见问题，支撑销售、服务与客户沟通。",
-    structures: ["定位", "场景", "功能", "使用方式", "FAQ"]
+    intro: "在原型阶段说明入口、状态、流程、异常和后台规则，减少评审中的理解偏差。",
+    structures: ["入口", "状态", "路径", "异常"],
+    status: "脱敏材料整理中"
   },
   {
     title: "调研复盘",
     type: "Review Notes",
     intro: "基于项目材料、客户反馈和竞品信息复盘问题依据、判断结论、风险点和后续建议。",
-    structures: ["问题", "依据", "结论", "风险", "建议"]
+    structures: ["问题", "依据", "结论", "风险"],
+    status: "脱敏材料整理中"
   }
 ];
 
@@ -351,6 +363,8 @@ const careerPath = [
     time: "2022.07 — 2026.02",
     organization: "广州品高软件",
     role: "产品标准化与政企方案支持",
+    theme: "Product Systems / 标准化体系与 AI 应用",
+    stage: "Standardization → AI",
     text: "负责产品标准化体系、销售 / 服务工具包、版本发布、资质管理、伙伴接入和政企方案支持，管理 8 人产品标准化团队。重点推动项目制经验向产品化材料沉淀，围绕产品定义、评审流程、发布节奏、售前材料和交付边界建立统一口径，并参与大模型应用、知识图谱、协同平台等政企方案判断。",
     tags: ["标准化体系", "政企方案", "8 人团队"],
     highlight: true
@@ -359,6 +373,8 @@ const careerPath = [
     time: "2022.04 — 2022.06",
     organization: "北京青云科技",
     role: "企业云产品与协同通讯",
+    theme: "Enterprise Product / 企业云协同",
+    stage: "Enterprise Product",
     text: "负责企业云产品需求分析与售前材料输出，围绕企业级通讯工具的通讯录、组织架构和团队入口优化协同体验，补充企业云产品中的组织关系与协作场景理解。",
     tags: ["企业云", "通讯录", "协同"]
   },
@@ -366,6 +382,8 @@ const careerPath = [
     time: "2020.06 — 2022.04",
     organization: "多益网络",
     role: "游戏内容社区与多端产品",
+    theme: "Content Community / 内容社区系统",
+    stage: "Content Systems",
     text: "负责游戏内内容社区相关产品规划，覆盖 App、Web、PC 客户端、创作者中心、后台管理和运营活动系统，积累多端产品、内容生产和活动运营链路经验。",
     tags: ["内容社区", "多端", "活动系统"]
   },
@@ -373,6 +391,8 @@ const careerPath = [
     time: "2018.07 — 2020.04",
     organization: "北京环信",
     role: "IM / RTC / PaaS 开发者产品",
+    theme: "IM / RTC Platform / 开发者产品",
+    stage: "IM / RTC",
     text: "负责 IM、RTC 和 PaaS 开发者产品需求，覆盖 REST 服务端、客户端 SDK、Console、Demo 示例和开发者文档，重点处理开发者接入路径与产品说明一致性。",
     tags: ["IM / RTC", "PaaS", "开发者体验"]
   },
@@ -380,6 +400,8 @@ const careerPath = [
     time: "2017.12 — 2018.06",
     organization: "戏多多",
     role: "内容创作社区 MVP",
+    theme: "Creator Community / 内容社区起点",
+    stage: "Content Community",
     text: "作为创业团队成员负责内容创作工具与语音小程序社区建设，跟进后台、增长活动、需求实现和上线测试，完成早期从概念验证到产品落地的训练。",
     tags: ["小程序", "语音内容", "MVP"]
   },
@@ -387,6 +409,8 @@ const careerPath = [
     time: "2017.06 — 2017.08",
     organization: "奥克斯集团",
     role: "PLM 与企业流程支持",
+    theme: "Enterprise Process / 企业流程认知",
+    stage: "Process Foundation",
     text: "参与 PLM 与企业流程项目，理解业务流程、IT 系统和项目交付之间的关系，形成对企业内部系统与流程协同的早期认知。",
     tags: ["PLM", "企业流程", "交付"]
   },
@@ -394,6 +418,8 @@ const careerPath = [
     time: "2014 — 2018",
     organization: "武汉科技大学阶段",
     role: "计算机科学与技术 / 校园产品实践",
+    theme: "Product Foundation / 产品基础训练",
+    stage: "Foundation",
     text: "计算机科学与技术本科阶段，持续完成移动应用、微信生态、产品概念和交互原型训练，并参与创业赛事与竞赛项目，建立早期产品意识和工程理解基础。",
     tags: ["计算机", "原型", "竞赛"],
     muted: true
@@ -791,8 +817,9 @@ function renderArchive() {
   const container = document.getElementById("workArchive");
   if (!container) return;
 
-  container.innerHTML = archiveGroups.map((item) => `
+  container.innerHTML = archiveGroups.map((item, index) => `
     <article class="material-card">
+      <div class="material-file-tab" aria-hidden="true">${String(index + 1).padStart(2, "0")}</div>
       <div class="material-heading">
         <span>${escapeHtml(item.type)}</span>
         <h3 class="archive-title card-title">${escapeHtml(item.title)}</h3>
@@ -801,6 +828,7 @@ function renderArchive() {
       <div class="structure-list">
         ${item.structures.map((structure) => `<span>${escapeHtml(structure)}</span>`).join("")}
       </div>
+      <span class="material-status">${escapeHtml(item.status)}</span>
     </article>
   `).join("");
 }
@@ -809,15 +837,25 @@ function renderCareer() {
   const container = document.getElementById("careerPath");
   if (!container) return;
 
-  container.innerHTML = careerPath.map((item) => `
+  container.innerHTML = careerPath.slice().reverse().map((item, index) => `
     <article class="timeline-item${item.highlight ? " is-highlight" : ""}${item.muted ? " is-muted" : ""}">
-      <time>${escapeHtml(item.time)}</time>
+      <div class="timeline-step">
+        <span>${String(index + 1).padStart(2, "0")}</span>
+        <time>${escapeHtml(item.time)}</time>
+      </div>
       <div class="timeline-dot" aria-hidden="true"></div>
       <div class="timeline-content">
-        <h3 class="career-title card-title">${escapeHtml(item.organization)}</h3>
-        <span>${escapeHtml(item.role)}</span>
+        <span class="career-stage">${escapeHtml(item.stage)}</span>
+        <h3 class="career-title card-title">${escapeHtml(item.theme)}</h3>
+        <div class="career-meta">
+          <strong>${escapeHtml(item.organization)}</strong>
+          <span>${escapeHtml(item.role)}</span>
+        </div>
         <p class="career-body card-body">${escapeHtml(item.text)}</p>
-        <div class="tag-row">${renderTags(item.tags, "tag tag-small")}</div>
+        <div class="career-keywords">
+          <span>Keywords</span>
+          <div class="tag-row">${renderTags(item.tags, "tag tag-small")}</div>
+        </div>
       </div>
     </article>
   `).join("");
@@ -873,6 +911,7 @@ function renderContact() {
   if (!container) return;
 
   container.innerHTML = `
+    <div class="contact-glow" aria-hidden="true"></div>
     <div class="contact-primary">
       <div class="contact-person">
         <img src="${escapeHtml(contactInfo.portrait)}" alt="个人头像">
@@ -881,19 +920,29 @@ function renderContact() {
           <span>Based in ${escapeHtml(contactInfo.city)}</span>
         </div>
       </div>
+      <p class="contact-lead">如果你正在处理企业级产品、产品标准化、政企方案或 AI 应用落地问题，可以直接联系我。</p>
       <div class="contact-lines">
-        <a href="tel:${escapeHtml(contactInfo.phone)}">${escapeHtml(contactInfo.phone)}</a>
-        <a href="mailto:${escapeHtml(contactInfo.email)}">${escapeHtml(contactInfo.email)}</a>
-        <button class="copy-email" type="button" data-copy-email aria-live="polite">Copy Email</button>
+        <a class="contact-button contact-button--primary" href="mailto:${escapeHtml(contactInfo.email)}">发送邮件</a>
+        <button class="contact-button copy-email" type="button" data-copy-email aria-live="polite">Copy Email</button>
       </div>
     </div>
-    <div class="contact-focus" aria-label="关注方向">
-      <span class="contact-focus-title">Focus</span>
-      <div class="contact-focus-tags">
-        <span>Enterprise Products / 企业级产品</span>
-        <span>Standardization / 标准化体系</span>
-        <span>GovTech Solutions / 政企方案</span>
-        <span>AI Judgement / AI 场景判断</span>
+    <div class="contact-side">
+      <div class="contact-channel">
+        <span>Phone</span>
+        <a href="tel:${escapeHtml(contactInfo.phone)}">${escapeHtml(contactInfo.phone)}</a>
+      </div>
+      <div class="contact-channel">
+        <span>Email</span>
+        <a href="mailto:${escapeHtml(contactInfo.email)}">${escapeHtml(contactInfo.email)}</a>
+      </div>
+      <div class="contact-focus" aria-label="关注方向">
+        <span class="contact-focus-title">Focus</span>
+        <div class="contact-focus-tags">
+          <span>Enterprise Products / 企业级产品</span>
+          <span>Standardization / 标准化体系</span>
+          <span>GovTech Solutions / 政企方案</span>
+          <span>AI Judgement / AI 场景判断</span>
+        </div>
       </div>
     </div>
   `;
