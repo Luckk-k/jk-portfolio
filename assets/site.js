@@ -264,28 +264,52 @@ const projectLibrary = [
 
 const capabilities = [
   {
-    title: "需求拆解",
-    text: "从客户场景、使用角色、业务目标和既有流程入手，判断问题属于产品能力、方案表达、流程协同还是交付边界。"
+    title: "Product Structure",
+    titleCn: "产品结构",
+    text: "把角色权限、对象关系、流程入口和后台规则拆成可协作的产品结构。",
+    evidence: "企业云盘产品重构",
+    map: "对应文件生命周期、授权管理、安全审计和跨端路径的重构判断。",
+    diagram: "structure"
   },
   {
-    title: "产品结构",
-    text: "梳理组织关系、角色权限、业务流程、数据流转和后台规则，明确产品的核心对象与协作入口。"
+    title: "Material System",
+    titleCn: "材料体系",
+    text: "把方案、说明、路线图、功能清单和培训资料沉淀为统一口径。",
+    evidence: "产品标准化体系建设",
+    map: "对应产品介绍、行业方案、报价依据和培训资料的复用沉淀。",
+    diagram: "material"
   },
   {
-    title: "材料标准化",
-    text: "将产品介绍、方案材料、版本说明、服务文档和培训资料沉淀为统一口径，提升售前与交付协作效率。"
+    title: "Scenario Judgement",
+    titleCn: "场景判断",
+    text: "先判断客户场景、流程约束和可承诺边界，再组织方案表达。",
+    evidence: "政企项目与 AI 方案支持",
+    map: "对应招标条款、技术参数、交付范围和风险边界的判断。",
+    diagram: "scenario"
   },
   {
-    title: "交付边界",
-    text: "面向政企项目提前确认技术参数、报价依据、交付范围、依赖条件和风险约束，减少后续反复拉扯。"
+    title: "Cross-team Collaboration",
+    titleCn: "跨团队协作",
+    text: "在产品、研发、设计、文档、销售、售前、交付之间定义输入输出。",
+    evidence: "产品标准化体系建设",
+    map: "对应评审、内审、周例会和发布管理中的跨角色协作节奏。",
+    diagram: "collaboration"
   },
   {
-    title: "AI 场景判断",
-    text: "评估 AI 场景中的知识来源、访问权限、人工复核、效果验证和业务流程接入方式，避免只停留在模型展示。"
+    title: "Product Standardization",
+    titleCn: "产品标准化",
+    text: "把评审、发布、模板和培训机制放进同一套可复用节奏。",
+    evidence: "产品标准化体系建设",
+    map: "对应需求评审、输出物模板、产品内审和培训机制建设。",
+    diagram: "standardization"
   },
   {
-    title: "跨角色协作",
-    text: "在产品、研发、设计、文档、销售、售前和交付之间明确输入、输出、责任人和检查点。"
+    title: "AI Application Thinking",
+    titleCn: "AI 应用判断",
+    text: "关注知识来源、访问权限、人工复核、效果验证和流程接入。",
+    evidence: "政企项目与 AI 方案支持",
+    map: "对应 AI 场景中的知识入库、权限控制、人工复核和风险约束。",
+    diagram: "ai"
   }
 ];
 
@@ -740,10 +764,25 @@ function renderCapabilities() {
   if (!container) return;
 
   container.innerHTML = capabilities.map((item, index) => `
-    <article class="capability-card">
-      <span class="capability-mark">${String(index + 1).padStart(2, "0")}</span>
-      <h3 class="card-title">${escapeHtml(item.title)}</h3>
-      <p class="card-body">${escapeHtml(item.text)}</p>
+    <article class="capability-card capability-card--${escapeHtml(item.diagram)}">
+      <div class="capability-card-top">
+        <span class="capability-mark">${String(index + 1).padStart(2, "0")}</span>
+        <span class="capability-diagram capability-diagram--${escapeHtml(item.diagram)}" aria-hidden="true">
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+      <div class="capability-content">
+        <span class="capability-title-cn">${escapeHtml(item.titleCn)}</span>
+        <h3 class="card-title">${escapeHtml(item.title)}</h3>
+        <p class="card-body">${escapeHtml(item.text)}</p>
+      </div>
+      <div class="capability-evidence">
+        <span>Evidence</span>
+        <strong>${escapeHtml(item.evidence)}</strong>
+      </div>
+      <p class="capability-hover-note">${escapeHtml(item.map)}</p>
     </article>
   `).join("");
 }
