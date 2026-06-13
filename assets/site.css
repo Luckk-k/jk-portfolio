@@ -3510,6 +3510,112 @@ main,
   }
 }
 
+/* Final responsive and accessibility polish */
+a:focus-visible,
+button:focus-visible,
+.project-card:focus-visible {
+  outline: 2px solid rgba(104, 121, 112, 0.46);
+  outline-offset: 3px;
+}
+
+.nav-links a:focus-visible,
+.hero-button:focus-visible,
+.case-card-action:focus-visible,
+.filter-button:focus-visible,
+.text-button:focus-visible,
+.project-drawer-close:focus-visible,
+.contact-button:focus-visible,
+.copy-email:focus-visible {
+  outline: 2px solid rgba(104, 121, 112, 0.5);
+}
+
+.nav-links a:focus-visible,
+.filter-button:focus-visible {
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .home-banner-section {
+    height: 150px;
+  }
+
+  .hero {
+    padding-bottom: 24px;
+  }
+
+  .hero-inner {
+    gap: 18px;
+    padding-top: 28px;
+    padding-bottom: 18px;
+  }
+
+  .hero-lead {
+    margin-top: 10px;
+  }
+
+  .hero-keywords {
+    margin-top: 14px;
+  }
+
+  .hero-actions {
+    margin-top: 18px;
+  }
+
+  .hero-stage {
+    min-height: 260px;
+    border-radius: 20px;
+    box-shadow: 0 14px 32px rgba(37, 45, 40, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  }
+
+  .hero-stage::before {
+    inset: 14px;
+    background-size: 30px 30px;
+  }
+
+  .hero-stage::after {
+    width: 260px;
+    height: 260px;
+    opacity: 0.42;
+  }
+
+  .hero-stage .home-intro-visual,
+  .hero-stage .home-system-visual {
+    width: min(70%, 210px);
+    max-width: 210px;
+  }
+
+  .hero-stage .hero-visual img,
+  .hero-stage .hero-visual-wrap img,
+  .hero-stage .home-intro-visual img,
+  .hero-stage .home-system-visual img {
+    max-width: 210px !important;
+  }
+
+  .method-strip {
+    gap: 8px;
+  }
+
+  .method-strip article {
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 8px;
+    padding: 13px 14px;
+  }
+
+  .method-strip p {
+    font-size: 12.5px;
+    line-height: 1.46;
+  }
+
+  .case-card,
+  .project-card,
+  .capability-card,
+  .material-card,
+  .timeline-content,
+  .contact-body {
+    box-shadow: 0 10px 24px rgba(37, 45, 40, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.68);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
