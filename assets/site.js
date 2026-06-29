@@ -1030,7 +1030,7 @@ function initMotion() {
   motionInitialized = true;
 
   if (!("IntersectionObserver" in window)) {
-    document.querySelectorAll(".page-section, .section-visual").forEach((element) => {
+    document.querySelectorAll(".page-section").forEach((element) => {
       element.classList.add("is-visible");
     });
     initIntroMotion();
@@ -1062,11 +1062,6 @@ function initMotion() {
   document.querySelectorAll("main > .page-section:not(.hero)").forEach((section) => {
     section.classList.add("motion-reveal");
     observeMotionElement(section);
-  });
-
-  document.querySelectorAll(".section-visual").forEach((visual) => {
-    visual.classList.add("motion-image");
-    observeMotionElement(visual);
   });
 
   [
