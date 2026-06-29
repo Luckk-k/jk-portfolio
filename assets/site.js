@@ -264,97 +264,61 @@ const projectLibrary = [
 
 const capabilities = [
   {
-    title: "Product Structure",
-    titleCn: "产品结构",
-    text: "把角色权限、对象关系、流程入口和后台规则拆成可协作的产品结构。",
-    evidence: "企业云盘产品重构",
-    map: "对应文件生命周期、授权管理、安全审计和跨端路径的重构判断。",
-    diagram: "structure"
+    title: "需求拆解",
+    text: "从客户场景、使用角色、业务目标和既有流程入手，判断问题属于产品能力、方案表达、流程协同还是交付边界。"
   },
   {
-    title: "Material System",
-    titleCn: "材料体系",
-    text: "把方案、说明、路线图、功能清单和培训资料沉淀为统一口径。",
-    evidence: "产品标准化体系建设",
-    map: "对应产品介绍、行业方案、报价依据和培训资料的复用沉淀。",
-    diagram: "material"
+    title: "产品结构",
+    text: "梳理组织关系、角色权限、业务流程、数据流转和后台规则，明确产品的核心对象与协作入口。"
   },
   {
-    title: "Scenario Judgement",
-    titleCn: "场景判断",
-    text: "先判断客户场景、流程约束和可承诺边界，再组织方案表达。",
-    evidence: "政企项目与 AI 方案支持",
-    map: "对应招标条款、技术参数、交付范围和风险边界的判断。",
-    diagram: "scenario"
+    title: "材料标准化",
+    text: "将产品介绍、方案材料、版本说明、服务文档和培训资料沉淀为统一口径，提升售前与交付协作效率。"
   },
   {
-    title: "Cross-team Collaboration",
-    titleCn: "跨团队协作",
-    text: "在产品、研发、设计、文档、销售、售前、交付之间定义输入输出。",
-    evidence: "产品标准化体系建设",
-    map: "对应评审、内审、周例会和发布管理中的跨角色协作节奏。",
-    diagram: "collaboration"
+    title: "交付边界",
+    text: "面向政企项目提前确认技术参数、报价依据、交付范围、依赖条件和风险约束，减少后续反复拉扯。"
   },
   {
-    title: "Product Standardization",
-    titleCn: "产品标准化",
-    text: "把评审、发布、模板和培训机制放进同一套可复用节奏。",
-    evidence: "产品标准化体系建设",
-    map: "对应需求评审、输出物模板、产品内审和培训机制建设。",
-    diagram: "standardization"
+    title: "AI 场景判断",
+    text: "评估 AI 场景中的知识来源、访问权限、人工复核、效果验证和业务流程接入方式，避免只停留在模型展示。"
   },
   {
-    title: "AI Application Thinking",
-    titleCn: "AI 应用判断",
-    text: "关注知识来源、访问权限、人工复核、效果验证和流程接入。",
-    evidence: "政企项目与 AI 方案支持",
-    map: "对应 AI 场景中的知识入库、权限控制、人工复核和风险约束。",
-    diagram: "ai"
+    title: "跨角色协作",
+    text: "在产品、研发、设计、文档、销售、售前和交付之间明确输入、输出、责任人和检查点。"
   }
 ];
 
 const archiveGroups = [
   {
-    title: "PRD / 功能说明",
-    type: "Product Docs",
-    intro: "围绕角色、场景、功能边界、后台规则和验收口径组织产品说明，便于评审和后续协作。",
-    structures: ["角色", "场景", "规则", "验收"],
-    status: "脱敏材料整理中"
-  },
-  {
-    title: "流程规范",
-    type: "Process Rules",
-    intro: "记录评审、发布、资质、伙伴接入和培训节点，明确责任人、输入、输出和检查点。",
-    structures: ["节点", "责任人", "输入", "输出"],
-    status: "脱敏材料整理中"
-  },
-  {
-    title: "发布材料",
-    type: "Release Notes",
-    intro: "梳理版本范围、能力变化、使用说明和对外口径，让销售、服务和交付能同步理解产品变化。",
-    structures: ["版本", "范围", "变化", "口径"],
-    status: "脱敏材料整理中"
-  },
-  {
-    title: "售前方案",
+    title: "方案材料",
     type: "Solution Notes",
     intro: "围绕客户背景、招标条款、产品能力、交付路径和风险边界组织方案内容，支撑售前沟通与内部评估。",
-    structures: ["背景", "条款", "方案", "边界"],
-    status: "脱敏材料整理中"
+    structures: ["背景", "条款", "方案", "边界", "风险", "下一步"]
   },
   {
     title: "原型与交互",
     type: "Prototype Paths",
-    intro: "在原型阶段说明入口、状态、流程、异常和后台规则，减少评审中的理解偏差。",
-    structures: ["入口", "状态", "路径", "异常"],
-    status: "脱敏材料整理中"
+    intro: "在原型阶段说明角色、入口、状态、流程、异常和后台规则，减少后续评审中的理解偏差。",
+    structures: ["角色", "场景", "状态", "路径", "异常", "规则"]
+  },
+  {
+    title: "流程文档",
+    type: "Working Rhythm",
+    intro: "记录评审、发布、资质、伙伴接入和培训节点，明确责任人、输入、输出和检查点。",
+    structures: ["节点", "责任人", "输入", "输出", "检查点"]
+  },
+  {
+    title: "产品说明",
+    type: "Product Language",
+    intro: "统一产品定位、核心能力、适用场景、使用方式和常见问题，支撑销售、服务与客户沟通。",
+    structures: ["定位", "场景", "功能", "使用方式", "FAQ"]
   },
   {
     title: "调研复盘",
     type: "Review Notes",
     intro: "基于项目材料、客户反馈和竞品信息复盘问题依据、判断结论、风险点和后续建议。",
-    structures: ["问题", "依据", "结论", "风险"],
-    status: "脱敏材料整理中"
+    structures: ["问题", "依据", "结论", "风险", "建议"]
   }
 ];
 
@@ -363,8 +327,6 @@ const careerPath = [
     time: "2022.07 — 2026.02",
     organization: "广州品高软件",
     role: "产品标准化与政企方案支持",
-    theme: "Product Systems / 标准化体系与 AI 应用",
-    stage: "Standardization → AI",
     text: "负责产品标准化体系、销售 / 服务工具包、版本发布、资质管理、伙伴接入和政企方案支持，管理 8 人产品标准化团队。重点推动项目制经验向产品化材料沉淀，围绕产品定义、评审流程、发布节奏、售前材料和交付边界建立统一口径，并参与大模型应用、知识图谱、协同平台等政企方案判断。",
     tags: ["标准化体系", "政企方案", "8 人团队"],
     highlight: true
@@ -373,8 +335,6 @@ const careerPath = [
     time: "2022.04 — 2022.06",
     organization: "北京青云科技",
     role: "企业云产品与协同通讯",
-    theme: "Enterprise Product / 企业云协同",
-    stage: "Enterprise Product",
     text: "负责企业云产品需求分析与售前材料输出，围绕企业级通讯工具的通讯录、组织架构和团队入口优化协同体验，补充企业云产品中的组织关系与协作场景理解。",
     tags: ["企业云", "通讯录", "协同"]
   },
@@ -382,8 +342,6 @@ const careerPath = [
     time: "2020.06 — 2022.04",
     organization: "多益网络",
     role: "游戏内容社区与多端产品",
-    theme: "Content Community / 内容社区系统",
-    stage: "Content Systems",
     text: "负责游戏内内容社区相关产品规划，覆盖 App、Web、PC 客户端、创作者中心、后台管理和运营活动系统，积累多端产品、内容生产和活动运营链路经验。",
     tags: ["内容社区", "多端", "活动系统"]
   },
@@ -391,8 +349,6 @@ const careerPath = [
     time: "2018.07 — 2020.04",
     organization: "北京环信",
     role: "IM / RTC / PaaS 开发者产品",
-    theme: "IM / RTC Platform / 开发者产品",
-    stage: "IM / RTC",
     text: "负责 IM、RTC 和 PaaS 开发者产品需求，覆盖 REST 服务端、客户端 SDK、Console、Demo 示例和开发者文档，重点处理开发者接入路径与产品说明一致性。",
     tags: ["IM / RTC", "PaaS", "开发者体验"]
   },
@@ -400,8 +356,6 @@ const careerPath = [
     time: "2017.12 — 2018.06",
     organization: "戏多多",
     role: "内容创作社区 MVP",
-    theme: "Creator Community / 内容社区起点",
-    stage: "Content Community",
     text: "作为创业团队成员负责内容创作工具与语音小程序社区建设，跟进后台、增长活动、需求实现和上线测试，完成早期从概念验证到产品落地的训练。",
     tags: ["小程序", "语音内容", "MVP"]
   },
@@ -409,8 +363,6 @@ const careerPath = [
     time: "2017.06 — 2017.08",
     organization: "奥克斯集团",
     role: "PLM 与企业流程支持",
-    theme: "Enterprise Process / 企业流程认知",
-    stage: "Process Foundation",
     text: "参与 PLM 与企业流程项目，理解业务流程、IT 系统和项目交付之间的关系，形成对企业内部系统与流程协同的早期认知。",
     tags: ["PLM", "企业流程", "交付"]
   },
@@ -418,8 +370,6 @@ const careerPath = [
     time: "2014 — 2018",
     organization: "武汉科技大学阶段",
     role: "计算机科学与技术 / 校园产品实践",
-    theme: "Product Foundation / 产品基础训练",
-    stage: "Foundation",
     text: "计算机科学与技术本科阶段，持续完成移动应用、微信生态、产品概念和交互原型训练，并参与创业赛事与竞赛项目，建立早期产品意识和工程理解基础。",
     tags: ["计算机", "原型", "竞赛"],
     muted: true
@@ -503,60 +453,20 @@ function renderFeaturedWork() {
   const container = document.getElementById("featuredWork");
   if (!container) return;
 
-  container.innerHTML = featuredWork.map((item, index) => {
-    const project = projectLibrary.find((projectItem) => projectItem.title === item.title);
-    const details = project?.details || {};
-    const projectIndex = project ? projectLibrary.indexOf(project) : -1;
-    const caseClass = index === 0 ? "case-card case-card--primary" : "case-card case-card--secondary";
-
-    return `
-    <article class="${caseClass}">
-      <div class="case-card-surface" aria-hidden="true"></div>
+  container.innerHTML = featuredWork.map((item) => `
+    <article class="case-card">
       <div class="case-card-head">
         <span class="case-visual case-icon meta-icon">${getCaseIcon(item.icon)}</span>
         <span class="case-category">${escapeHtml(item.category)}</span>
-        <span class="case-card-index">${String(index + 1).padStart(2, "0")}</span>
       </div>
       <div class="case-body">
         <h3 class="case-title card-title">${escapeHtml(item.title)}</h3>
         <p class="case-line">${escapeHtml(item.line)}</p>
+        <p class="card-body">${escapeHtml(item.body)}</p>
         <div class="tag-row">${renderTags(item.tags)}</div>
-        <div class="case-proof-list">
-          <div class="case-proof">
-            <span>背景问题</span>
-            <p>${escapeHtml(details.background || item.line)}</p>
-          </div>
-          <div class="case-proof">
-            <span>我的角色 / 工作方式</span>
-            <p>${escapeHtml(details.responsibility || item.body)}</p>
-          </div>
-          <div class="case-proof">
-            <span>关键产出</span>
-            <p>${escapeHtml(details.outputs || item.body)}</p>
-          </div>
-        </div>
-        ${projectIndex >= 0 ? `
-          <button class="case-card-action" type="button" data-featured-project-index="${projectIndex}">
-            查看项目
-            <span aria-hidden="true">→</span>
-          </button>
-        ` : ""}
       </div>
     </article>
-    `;
-  }).join("");
-}
-
-function initFeaturedCaseActions() {
-  document.addEventListener("click", (event) => {
-    const trigger = event.target.closest?.("[data-featured-project-index]");
-    if (!trigger) return;
-
-    const item = projectLibrary[Number(trigger.dataset.featuredProjectIndex)];
-    if (!item) return;
-
-    openProjectDrawer(item, trigger);
-  });
+  `).join("");
 }
 
 function matchesProjectFilter(item) {
@@ -705,7 +615,7 @@ function scrollToProjectMapAnchor() {
 
   const header = document.querySelector(".site-header");
   const headerHeight = header ? header.getBoundingClientRect().height : 0;
-  const top = anchor.getBoundingClientRect().top + window.scrollY - headerHeight - 56;
+  const top = anchor.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
 
   window.scrollTo({
     top: Math.max(0, top),
@@ -790,25 +700,10 @@ function renderCapabilities() {
   if (!container) return;
 
   container.innerHTML = capabilities.map((item, index) => `
-    <article class="capability-card capability-card--${escapeHtml(item.diagram)}">
-      <div class="capability-card-top">
-        <span class="capability-mark">${String(index + 1).padStart(2, "0")}</span>
-        <span class="capability-diagram capability-diagram--${escapeHtml(item.diagram)}" aria-hidden="true">
-          <i></i>
-          <i></i>
-          <i></i>
-        </span>
-      </div>
-      <div class="capability-content">
-        <span class="capability-title-cn">${escapeHtml(item.titleCn)}</span>
-        <h3 class="card-title">${escapeHtml(item.title)}</h3>
-        <p class="card-body">${escapeHtml(item.text)}</p>
-      </div>
-      <div class="capability-evidence">
-        <span>Evidence</span>
-        <strong>${escapeHtml(item.evidence)}</strong>
-      </div>
-      <p class="capability-hover-note">${escapeHtml(item.map)}</p>
+    <article class="capability-card">
+      <span class="capability-mark">${String(index + 1).padStart(2, "0")}</span>
+      <h3 class="card-title">${escapeHtml(item.title)}</h3>
+      <p class="card-body">${escapeHtml(item.text)}</p>
     </article>
   `).join("");
 }
@@ -817,9 +712,8 @@ function renderArchive() {
   const container = document.getElementById("workArchive");
   if (!container) return;
 
-  container.innerHTML = archiveGroups.map((item, index) => `
+  container.innerHTML = archiveGroups.map((item) => `
     <article class="material-card">
-      <div class="material-file-tab" aria-hidden="true">${String(index + 1).padStart(2, "0")}</div>
       <div class="material-heading">
         <span>${escapeHtml(item.type)}</span>
         <h3 class="archive-title card-title">${escapeHtml(item.title)}</h3>
@@ -828,7 +722,6 @@ function renderArchive() {
       <div class="structure-list">
         ${item.structures.map((structure) => `<span>${escapeHtml(structure)}</span>`).join("")}
       </div>
-      <span class="material-status">${escapeHtml(item.status)}</span>
     </article>
   `).join("");
 }
@@ -837,25 +730,15 @@ function renderCareer() {
   const container = document.getElementById("careerPath");
   if (!container) return;
 
-  container.innerHTML = careerPath.slice().reverse().map((item, index) => `
+  container.innerHTML = careerPath.map((item) => `
     <article class="timeline-item${item.highlight ? " is-highlight" : ""}${item.muted ? " is-muted" : ""}">
-      <div class="timeline-step">
-        <span>${String(index + 1).padStart(2, "0")}</span>
-        <time>${escapeHtml(item.time)}</time>
-      </div>
+      <time>${escapeHtml(item.time)}</time>
       <div class="timeline-dot" aria-hidden="true"></div>
       <div class="timeline-content">
-        <span class="career-stage">${escapeHtml(item.stage)}</span>
-        <h3 class="career-title card-title">${escapeHtml(item.theme)}</h3>
-        <div class="career-meta">
-          <strong>${escapeHtml(item.organization)}</strong>
-          <span>${escapeHtml(item.role)}</span>
-        </div>
+        <h3 class="career-title card-title">${escapeHtml(item.organization)}</h3>
+        <span>${escapeHtml(item.role)}</span>
         <p class="career-body card-body">${escapeHtml(item.text)}</p>
-        <div class="career-keywords">
-          <span>Keywords</span>
-          <div class="tag-row">${renderTags(item.tags, "tag tag-small")}</div>
-        </div>
+        <div class="tag-row">${renderTags(item.tags, "tag tag-small")}</div>
       </div>
     </article>
   `).join("");
@@ -911,7 +794,6 @@ function renderContact() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="contact-glow" aria-hidden="true"></div>
     <div class="contact-primary">
       <div class="contact-person">
         <img src="${escapeHtml(contactInfo.portrait)}" alt="个人头像">
@@ -920,29 +802,19 @@ function renderContact() {
           <span>Based in ${escapeHtml(contactInfo.city)}</span>
         </div>
       </div>
-      <p class="contact-lead">如果你正在处理企业级产品、产品标准化、政企方案或 AI 应用落地问题，可以直接联系我。</p>
       <div class="contact-lines">
-        <a class="contact-button contact-button--primary" href="mailto:${escapeHtml(contactInfo.email)}">发送邮件</a>
-        <button class="contact-button copy-email" type="button" data-copy-email aria-live="polite">Copy Email</button>
+        <a href="tel:${escapeHtml(contactInfo.phone)}">${escapeHtml(contactInfo.phone)}</a>
+        <a href="mailto:${escapeHtml(contactInfo.email)}">${escapeHtml(contactInfo.email)}</a>
+        <button class="copy-email" type="button" data-copy-email aria-live="polite">Copy Email</button>
       </div>
     </div>
-    <div class="contact-side">
-      <div class="contact-channel">
-        <span>Phone</span>
-        <a href="tel:${escapeHtml(contactInfo.phone)}">${escapeHtml(contactInfo.phone)}</a>
-      </div>
-      <div class="contact-channel">
-        <span>Email</span>
-        <a href="mailto:${escapeHtml(contactInfo.email)}">${escapeHtml(contactInfo.email)}</a>
-      </div>
-      <div class="contact-focus" aria-label="关注方向">
-        <span class="contact-focus-title">Focus</span>
-        <div class="contact-focus-tags">
-          <span>Enterprise Products / 企业级产品</span>
-          <span>Standardization / 标准化体系</span>
-          <span>GovTech Solutions / 政企方案</span>
-          <span>AI Judgement / AI 场景判断</span>
-        </div>
+    <div class="contact-focus" aria-label="关注方向">
+      <span class="contact-focus-title">Focus</span>
+      <div class="contact-focus-tags">
+        <span>Enterprise Products / 企业级产品</span>
+        <span>Standardization / 标准化体系</span>
+        <span>GovTech Solutions / 政企方案</span>
+        <span>AI Judgement / AI 场景判断</span>
       </div>
     </div>
   `;
@@ -1007,19 +879,14 @@ function initIntroMotion() {
 
   const introItems = [
     document.querySelector(".nav-shell"),
-    document.querySelector(".hero-kicker"),
-    document.querySelector(".hero-name"),
-    document.querySelector(".hero-role"),
-    ...document.querySelectorAll(".hero-copy"),
-    document.querySelector(".hero-tags"),
-    document.querySelector(".hero-actions"),
-    document.querySelector(".hero-stage"),
+    document.querySelector(".hero-main"),
+    document.querySelector(".hero-visual-wrap"),
     ...document.querySelectorAll(".method-strip article")
   ].filter(Boolean);
 
   introItems.forEach((item, index) => {
     item.classList.add("intro-reveal");
-    item.style.setProperty("--intro-delay", `${Math.min(index * 70, 560)}ms`);
+    item.style.setProperty("--intro-delay", `${[0, 60, 120, 180, 230, 280][index] || 280}ms`);
   });
 }
 
@@ -1102,8 +969,7 @@ function scrollToAnchor(hash, updateHistory = false) {
   const anchor = target.querySelector?.(".section-heading") || target;
   const header = document.querySelector(".site-header");
   const headerHeight = header ? header.getBoundingClientRect().height : 0;
-  const anchorOffset = headerHeight + 56;
-  const top = anchor.getBoundingClientRect().top + window.scrollY - anchorOffset;
+  const top = anchor.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
 
   window.scrollTo({
     top: Math.max(0, top),
@@ -1127,7 +993,7 @@ function initAnchorNavigation() {
   }, true);
 
   document.addEventListener("click", (event) => {
-    const link = event.target.closest?.(".brand[href^='#'], .nav-links a[href^='#'], .hero-actions a[href^='#']");
+    const link = event.target.closest?.(".brand[href^='#'], .nav-links a[href^='#']");
     if (!link) return;
 
     event.preventDefault();
@@ -1141,30 +1007,6 @@ function initAnchorNavigation() {
   if (window.location.hash) {
     window.setTimeout(() => scrollToAnchor(window.location.hash), 0);
   }
-}
-
-function initScrollState() {
-  const header = document.querySelector(".site-header");
-
-  const sync = () => {
-    const isScrolled = window.scrollY > 12;
-    document.body.classList.toggle("is-scrolled", isScrolled);
-    header?.classList.toggle("is-scrolled", isScrolled);
-  };
-
-  let ticking = false;
-  const requestSync = () => {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(() => {
-      sync();
-      ticking = false;
-    });
-  };
-
-  sync();
-  window.addEventListener("scroll", requestSync, { passive: true });
-  window.addEventListener("resize", requestSync);
 }
 
 function initNavState() {
@@ -1191,10 +1033,6 @@ function initNavState() {
         activeHash = hash;
       }
     });
-
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
-      activeHash = targets[targets.length - 1]?.hash || activeHash;
-    }
 
     navLinks.forEach((link) => {
       link.classList.toggle("is-active", link.getAttribute("href") === activeHash);
@@ -1227,10 +1065,8 @@ function init() {
   renderEarlyPractice();
   renderContact();
   initProjectDrawer();
-  initFeaturedCaseActions();
   initMotion();
   initAnchorNavigation();
-  initScrollState();
   initNavState();
 }
 
