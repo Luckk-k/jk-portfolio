@@ -1070,7 +1070,66 @@ function initMotion() {
   initIntroMotion();
 }
 
-function scrollToAnchor(hash, updateHistory = false) {
+function clearLocationHash() {
+  if (!window.location.hash) return;
+  window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+}
+
+function getLayoutTop(element) {
+  let top = 0;
+  let node = element;
+
+  while (node) {
+    top += node.offsetTop;
+    node = node.offsetParent;
+  }
+
+  return top;
+}
+
+function getAnchorLayoutTop(target, anchor) {
+  const targetTop = getLayoutTop(target);
+  const targetRect = target.getBoundingClientRect();
+  const anchorRect = anchor.getBoundingClientRect();
+
+  return targetTop + (anchorRect.top - targetRect.top);
+}
+
+function getPreviousTextOverflow(target) {
+  const previousSection = target.previousElementSibling;
+  const header = document.querySelector(".site-header");
+  if (!previousSection || !header) return 0;
+
+  const regionBottom = header.getBoundingClientRect().bottom + 8;
+  const textSelector = "h1,h2,h3,h4,p,span,a,button,.tag,.project-card-action,.case-card-action,.text-button";
+
+  return Array.from(previousSection.querySelectorAll(textSelector)).reduce((maxBottom, element) => {
+    const style = window.getComputedStyle(element);
+    const text = (element.innerText || element.textContent || "").trim();
+    if (!text || style.display === "none" || style.visibility === "hidden") {
+      return maxBottom;
+    }
+
+    const rect = element.getBoundingClientRect();
+    if (rect.width <= 0 || rect.height <= 0 || rect.bottom <= 0 || rect.top >= regionBottom) {
+      return maxBottom;
+    }
+
+    return Math.max(maxBottom, rect.bottom);
+  }, 0);
+}
+
+function correctPreviousTextOverlap(target) {
+  const overflow = getPreviousTextOverflow(target);
+  if (overflow <= 0) return;
+
+  window.scrollBy({
+    top: Math.ceil(overflow) + 4,
+    behavior: "auto"
+  });
+}
+
+function scrollToAnchor(hash, behaviorOverride = null) {
   if (!hash || hash === "#") return false;
   const target = document.querySelector(hash);
   if (!target) return false;
@@ -1081,27 +1140,27 @@ function scrollToAnchor(hash, updateHistory = false) {
       behavior: "auto"
     });
 
-    if (updateHistory && window.location.hash !== hash) {
-      window.history.pushState(null, "", hash);
-    }
+    clearLocationHash();
 
     return true;
   }
 
-  const anchor = target.querySelector?.(".section-heading") || target;
   const header = document.querySelector(".site-header");
   const headerHeight = header ? header.getBoundingClientRect().height : 0;
-  const anchorOffset = headerHeight + 56;
-  const top = anchor.getBoundingClientRect().top + window.scrollY - anchorOffset;
+  const anchor = target.querySelector?.(".section-kicker") || target.querySelector?.("h2") || target;
+  const anchorGap = 12;
+  const top = getAnchorLayoutTop(target, anchor) - headerHeight - anchorGap;
+
+  const behavior = behaviorOverride || (prefersReducedMotion() ? "auto" : "smooth");
 
   window.scrollTo({
     top: Math.max(0, top),
-    behavior: prefersReducedMotion() ? "auto" : "smooth"
+    behavior
   });
 
-  if (updateHistory && window.location.hash !== hash) {
-    window.history.pushState(null, "", hash);
-  }
+  clearLocationHash();
+  window.setTimeout(() => correctPreviousTextOverlap(target), behavior === "auto" ? 80 : 1200);
+  window.setTimeout(() => correctPreviousTextOverlap(target), behavior === "auto" ? 160 : 1900);
 
   return true;
 }
@@ -1112,7 +1171,8 @@ function initAnchorNavigation() {
     if (!link) return;
 
     event.preventDefault();
-    scrollToAnchor("#top", true);
+    event.stopImmediatePropagation();
+    scrollToAnchor("#top");
   }, true);
 
   document.addEventListener("click", (event) => {
@@ -1120,16 +1180,24 @@ function initAnchorNavigation() {
     if (!link) return;
 
     event.preventDefault();
-    scrollToAnchor(link.getAttribute("href"), true);
+    event.stopImmediatePropagation();
+    scrollToAnchor(link.getAttribute("href"));
   }, true);
 
   window.addEventListener("hashchange", () => {
-    scrollToAnchor(window.location.hash);
+    clearLocationHash();
+    window.scrollTo({
+      top: 0,
+      behavior: "auto"
+    });
   });
 
   if (window.location.hash) {
-    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
-    window.setTimeout(() => scrollToAnchor("#top"), 0);
+    clearLocationHash();
+    window.scrollTo({
+      top: 0,
+      behavior: "auto"
+    });
   }
 }
 

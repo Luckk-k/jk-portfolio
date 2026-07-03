@@ -1,13 +1,16 @@
 :root {
   --page-max: 1240px;
   --header-height: 68px;
-  --section-anchor-offset: 96px;
-  --section-padding-top: clamp(64px, 7vw, 88px);
-  --section-padding-bottom: clamp(64px, 7vw, 88px);
+  --section-anchor-offset: 0px;
+  --section-padding-top: clamp(40px, 3vw, 44px);
+  --section-padding-bottom: clamp(40px, 3vw, 44px);
   --section-content-gap: 28px;
   --section-gap: 96px;
   --content-max: 1180px;
   --container-pad: clamp(24px, 4.5vw, 64px);
+  --site-gutter: var(--content-pad);
+  --site-max-width: calc(var(--page-max) + (var(--site-gutter) * 2));
+  --site-edge-gutter: 0px;
   --bg: #F3F1EC;
   --bg-soft: #F8F6F2;
   --surface: rgba(255, 255, 255, 0.9);
@@ -50,7 +53,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--section-anchor-offset);
+  scroll-padding-top: 0;
 }
 
 section[id],
@@ -179,12 +182,12 @@ img {
 .section-inner,
 .page-shell,
 .nav-shell {
-  width: auto;
-  max-width: var(--page-max);
-  box-sizing: content-box;
+  width: min(calc(100% - (var(--site-edge-gutter) * 2)), var(--site-max-width));
+  max-width: none;
+  box-sizing: border-box;
   margin: 0 auto;
-  padding-left: var(--container-pad);
-  padding-right: var(--container-pad);
+  padding-left: var(--site-gutter);
+  padding-right: var(--site-gutter);
 }
 
 .site-header {
@@ -296,8 +299,8 @@ main {
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: calc(100svh - var(--header-height));
-  padding: 0 0 24px;
+  min-height: auto;
+  padding: 0 0 var(--section-padding-bottom);
 }
 
 main,
@@ -1675,7 +1678,7 @@ main,
 
 .site-container.contact-layout {
   display: block;
-  max-width: 1120px;
+  max-width: none;
 }
 
 .contact-layout .section-heading {
@@ -1703,7 +1706,7 @@ main,
   column-gap: 40px;
   align-items: center;
   width: 100%;
-  max-width: 948px;
+  max-width: none;
   margin-top: 0;
   border: 1px solid rgba(42, 42, 42, 0.08);
   border-radius: 24px;
@@ -1928,7 +1931,9 @@ html.motion-ready .motion-stagger-item.is-visible {
   right: 0;
   display: flex;
   flex-direction: column;
-  width: min(480px, calc(100vw - 32px));
+  width: clamp(460px, 35vw, 680px);
+  max-width: min(680px, 92vw);
+  flex-basis: clamp(460px, 35vw, 680px);
   height: 100%;
   border-left: 1px solid rgba(42, 42, 42, 0.1);
   background: rgba(255, 255, 255, 0.92);
@@ -2280,6 +2285,8 @@ body.drawer-open {
     top: auto;
     bottom: 0;
     width: 100%;
+    max-width: none;
+    flex-basis: auto;
     height: min(86vh, 720px);
     border-top: 1px solid rgba(42, 42, 42, 0.1);
     border-left: 0;
@@ -2310,12 +2317,15 @@ body.drawer-open {
 /* Final container reset */
 .site-container,
 .section-container,
-.section-inner {
-  max-width: 1240px;
+.section-inner,
+.nav-shell {
+  width: min(calc(100% - (var(--site-edge-gutter) * 2)), var(--site-max-width));
+  max-width: none;
+  box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
-  padding-left: clamp(32px, 5.2vw, 88px);
-  padding-right: clamp(32px, 5.2vw, 88px);
+  padding-left: var(--site-gutter);
+  padding-right: var(--site-gutter);
 }
 
 main .site-container,
@@ -2953,7 +2963,7 @@ main,
   position: relative;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
   column-gap: 34px;
-  max-width: 960px;
+  max-width: none;
   overflow: hidden;
   border-color: rgba(92, 96, 92, 0.12);
   border-radius: 26px;
