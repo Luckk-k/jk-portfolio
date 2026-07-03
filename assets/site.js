@@ -804,11 +804,6 @@ function renderCapabilities() {
         <h3 class="card-title">${escapeHtml(item.title)}</h3>
         <p class="card-body">${escapeHtml(item.text)}</p>
       </div>
-      <div class="capability-evidence">
-        <span>Evidence</span>
-        <strong>${escapeHtml(item.evidence)}</strong>
-      </div>
-      <p class="capability-hover-note">${escapeHtml(item.map)}</p>
     </article>
   `).join("");
 }
@@ -1012,7 +1007,6 @@ function initIntroMotion() {
     document.querySelector(".hero-role"),
     ...document.querySelectorAll(".hero-copy"),
     document.querySelector(".hero-tags"),
-    document.querySelector(".hero-actions"),
     document.querySelector(".hero-stage"),
     ...document.querySelectorAll(".method-strip article")
   ].filter(Boolean);
@@ -1122,7 +1116,7 @@ function initAnchorNavigation() {
   }, true);
 
   document.addEventListener("click", (event) => {
-    const link = event.target.closest?.(".brand[href^='#'], .nav-links a[href^='#'], .hero-actions a[href^='#']");
+    const link = event.target.closest?.(".brand[href^='#'], .nav-links a[href^='#']");
     if (!link) return;
 
     event.preventDefault();
