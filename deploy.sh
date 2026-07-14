@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+export GIT_TERMINAL_PROMPT=0
+
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT_DIR"
 
@@ -166,9 +168,24 @@ if [[ "$PUSH_CHANGES" -eq 1 ]]; then
     exit 1
   fi
 
+  echo "==> Checking GitHub push authentication"
+  push_check_output=""
+  if ! push_check_output="$(git push --dry-run -u origin "$branch" 2>&1)"; then
+    if grep -Eqi 'authentication failed|could not read (Username|Password)|terminal prompts disabled|permission denied \(publickey\)|repository not found|access denied|HTTP 403' <<<"$push_check_output"; then
+      echo "GitHub 推送认证不可用，请先在本机终端执行 gh auth login 和 gh auth setup-git。" >&2
+    else
+      echo "GitHub 推送预检查失败：" >&2
+      echo "$push_check_output" >&2
+    fi
+    exit 1
+  fi
+
   echo "==> Pushing to origin/$branch"
-  git push -u origin "$branch"
-  echo "Pushed. Vercel should redeploy luckk.cn automatically."
+  if ! git push -u origin "$branch"; then
+    echo "GitHub 推送失败，未检查 Vercel。" >&2
+    exit 1
+  fi
+  echo "部署推送完成"
 else
   echo "Push skipped."
 fi
